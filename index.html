@@ -10,41 +10,14 @@
   <!-- Open Graph / Social -->
   <meta property="og:title" content="John Khylle C. Dumlao — Full Stack Developer">
   <meta property="og:description" content="Certified IT student and full-stack developer. View projects, CV, and contact information.">
-    // Mobile menu toggle and smooth behaviour
-    (function(){
-      const navToggle = document.getElementById('navToggle');
-      const mobileMenu = document.getElementById('mobileMenu');
-      navToggle.addEventListener('click', () => {
-        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!expanded));
-        if(!expanded){
-          mobileMenu.classList.add('open');
-          mobileMenu.setAttribute('aria-hidden','false');
-        } else {
-          mobileMenu.classList.remove('open');
-          mobileMenu.setAttribute('aria-hidden','true');
-        }
-      });
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/preview.svg">
+  <meta property="og:url" content="https://your-site.example">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="John Khylle C. Dumlao — Full Stack Developer">
+  <meta name="twitter:description" content="Certified IT student and full-stack developer. Django, Python, Node.js, MongoDB.">
 
-      // Close when clicking a menu link
-      mobileMenu.addEventListener('click', (e)=>{
-        if(e.target.tagName === 'A'){
-          mobileMenu.classList.remove('open');
-          navToggle.setAttribute('aria-expanded','false');
-        }
-      });
-
-      // Smooth scroll for all internal links
-      document.querySelectorAll('a[href^="#"]').forEach(a=>{
-        a.addEventListener('click', function(e){
-          const target = document.querySelector(this.getAttribute('href'));
-          if(target){
-            e.preventDefault();
-            target.scrollIntoView({behavior:'smooth',block:'start'});
-          }
-        });
-      });
-    })();
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
@@ -146,26 +119,18 @@
 <body>
   <header>
     <div class="container">
-      <nav aria-label="Main Navigation">
+      <nav>
         <div class="logo">JKD</div>
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu">☰</button>
-        <ul class="nav-links" role="list">
-          <li role="listitem"><a href="#home">Home</a></li>
-          <li role="listitem"><a href="#skills">Skills</a></li>
-          <li role="listitem"><a href="#experience">Experience</a></li>
-          <li role="listitem"><a href="#projects">Projects</a></li>
-          <li role="listitem"><a href="#contact">Contact</a></li>
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav">☰</button>
+        <ul class="nav-links" aria-hidden="false">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
-        <div class="panel" role="dialog" aria-modal="true">
-          <a href="#home">Home</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
+      <div id="mobileNav" class="mobile-nav" aria-hidden="true"></div>
     </div>
   </header>
 
@@ -243,7 +208,7 @@
           <p><strong>Tech:</strong> Python (Django) / Node.js (backend services), JavaScript, MongoDB, RESTful APIs, Render (deployment)</p>
           <p><strong>Contributions:</strong> Designed and implemented the search API, listing verification flow, and direct messaging endpoints; integrated frontend views and optimized load times for listings.</p>
           <p><strong>Outcome:</strong> Live platform serving local renters with 500+ listings and growing user onboarding. Increased listing discovery speed via search improvements and reduced fraudulent listings through verification workflow.</p>
-          <p><a href="https://tahanap.xyz" target="_blank" rel="noopener">Live site</a> • <a href="#">Source (repo)</a></p>
+          <p><a href="https://tahanap.xyz" target="_blank" rel="noopener">Live site</a> • <a href="https://github.com/ItsKayl05/webprofile" target="_blank" rel="noopener">Source (repo)</a></p>
           <img src="assets/tahanap-screenshot.svg" alt="TaHanap homepage screenshot" loading="lazy" style="max-width:100%;border-radius:6px;margin-top:.5rem">
         </article>
 
