@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect fill="#f4f6f8" width="1200" height="800"/>
+  <rect x="40" y="40" width="1120" height="120" rx="8" fill="#667eea"/>
+  <text x="80" y="110" font-family="Segoe UI, Arial" font-size="36" fill="#fff">TaHanap — Rental Platform (Preview)</text>
+  <rect x="60" y="200" width="1080" height="520" rx="10" fill="#fff" stroke="#e1e5ea"/>
+  <text x="80" y="260" font-family="Segoe UI, Arial" font-size="20" fill="#333">Homepage features: smart search, verified listings, direct messaging, and growing network.</text>
+  <text x="80" y="300" font-family="Segoe UI, Arial" font-size="16" fill="#666">Live: https://tahanap.xyz</text>
+</svg>
