@@ -22,6 +22,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
 
+  <!-- Smooth Scrolling & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Favicons (placeholders in assets/) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+
   <style>
     :root{
       --bg: #fbfdff;
@@ -102,6 +112,22 @@
     .mobile-menu.open{opacity:1;pointer-events:auto}
     .mobile-menu .panel{background:#fff;border-radius:12px;padding:1rem;width:90%;max-width:420px;box-shadow:0 20px 50px rgba(2,6,23,0.4)}
     .mobile-menu a{display:block;padding:.75rem 0;color:var(--primary);font-weight:700}
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -119,31 +145,80 @@
 <body>
   <header>
     <div class="container">
-      <nav>
-        <div class="logo">JKD</div>
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav">☰</button>
-        <ul class="nav-links" aria-hidden="false">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+      <nav style="padding: 1rem 0; display:flex; align-items:center; justify-content:space-between;">
+        <!-- Logo with animated mark -->
+        <a href="#home" class="logo" style="font-weight:900;font-size:1.5rem;color:var(--primary);text-decoration:none;display:flex;align-items:center;gap:0.5rem;">
+          <div style="width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;">JKD</div>
+          <span>John Khylle</span>
+        </a>
+
+        <ul class="nav-links" style="display:flex;gap:0.5rem;list-style:none;align-items:center;margin:0;padding:0;">
+          <li><a href="#home" style="padding:.75rem 1.25rem;border-radius:12px;text-decoration:none;color:var(--primary);font-weight:600;transition:all .3s;"> <i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#skills" style="padding:.75rem 1.25rem;border-radius:12px;text-decoration:none;color:var(--primary);font-weight:600;transition:all .3s;"> <i class="fas fa-code"></i> Skills</a></li>
+          <li><a href="#projects" style="padding:.75rem 1.25rem;border-radius:12px;text-decoration:none;color:var(--primary);font-weight:600;transition:all .3s;"> <i class="fas fa-briefcase"></i> Projects</a></li>
+          <li><a href="#contact" class="nav-cta" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:.75rem 1.5rem;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:0 10px 30px rgba(102,126,234,0.3);transition:all .3s;"> <i class="fas fa-paper-plane"></i> Contact</a></li>
         </ul>
+
+        <div class="nav-social" style="display:flex;gap:1rem;align-items:center;">
+          <a href="https://github.com/ItsKayl05" target="_blank" style="color:var(--primary);font-size:1.2rem;"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/yourprofile" target="_blank" style="color:var(--primary);font-size:1.2rem;"><i class="fab fa-linkedin"></i></a>
+        </div>
       </nav>
-      <div id="mobileNav" class="mobile-nav" aria-hidden="true"></div>
     </div>
   </header>
 
   <main>
     <section id="home" class="hero">
       <div class="container">
-        <h1>John Khylle C. Dumlao</h1>
-        <p class="hero-subtitle">Full Stack Developer & Certified IT Student (TOPCIT, TESDA)</p>
-        <p>San Jose Del Monte, Bulacan • Available for full-time roles</p>
-        <div class="cta" style="margin-top:1rem">
-          <a class="btn btn-primary" href="#contact">Hire Me — Let's Talk</a>
-          <a class="btn btn-ghost" href="cv/JohnKhylle_Dumlao_CV.pdf" download>Download CV</a>
-          <a class="btn" href="#projects" style="background:#fff;border-radius:7px">View Projects</a>
+        <!-- Animated greeting -->
+        <div class="greeting" style="font-size:1.1rem;margin-bottom:1rem;opacity:0.95;animation:fadeInUp .8s ease-out;">
+          <span class="wave">👋</span> Hello! I'm
+        </div>
+
+        <!-- Main title with gradient -->
+        <h1 style="font-size:clamp(2.5rem,8vw,4.5rem);font-weight:900;line-height:1.1;margin:0.5rem 0;background:linear-gradient(135deg,#667eea 0%,#764ba2 50%,#f093fb 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+          John Khylle C. Dumlao
+        </h1>
+
+        <!-- Animated subtitle -->
+        <div class="subtitle-wrapper" style="margin-bottom:1.5rem;">
+          <p class="typewriter" style="font-size:clamp(1.1rem,4vw,1.5rem);font-weight:600;color:rgba(255,255,255,0.95);display:inline-block;">
+            <span id="typed-text"></span>
+            <span class="cursor" style="display:inline-block;width:3px;height:1.2em;background-color:white;margin-left:2px;animation:blink 1s infinite;"></span>
+          </p>
+        </div>
+
+        <!-- Location & Status -->
+        <div class="location" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:2rem;color:rgba(255,255,255,0.85);">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>San Jose Del Monte, Bulacan</span>
+          <span class="badge" style="background:rgba(255,255,255,0.15);padding:0.25rem 0.75rem;border-radius:20px;font-size:0.85rem;margin-left:1rem;">
+            <i class="fas fa-bolt"></i> Available for full-time roles
+          </span>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="cta" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2rem;">
+          <a href="#contact" class="btn-primary" style="background:white;color:#4f46e5;padding:1rem 2rem;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;box-shadow:0 10px 30px rgba(79,70,229,0.3);transition:all .3s;border:2px solid transparent;">
+            <i class="fas fa-rocket"></i>
+            Hire Me — Let's Talk
+          </a>
+
+          <a href="cv/JohnKhylle_Dumlao_CV.pdf" download class="btn-outline" style="background:transparent;color:white;padding:1rem 2rem;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;border:2px solid rgba(255,255,255,0.3);transition:all .3s;backdrop-filter:blur(10px);">
+            <i class="fas fa-download"></i>
+            Download CV
+          </a>
+
+          <a href="#projects" class="btn-ghost" style="background:rgba(255,255,255,0.1);color:white;padding:1rem 2rem;border-radius:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all .3s;">
+            <i class="fas fa-eye"></i>
+            View Projects
+          </a>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);text-align:center;color:rgba(255,255,255,0.7);animation:bounce 2s infinite;">
+          <p style="margin-bottom:0.5rem;font-size:0.9rem;">Scroll to explore</p>
+          <i class="fas fa-chevron-down"></i>
         </div>
       </div>
     </section>
@@ -272,14 +347,74 @@
   </footer>
 
   <script>
-    const navToggle = document.getElementById('navToggle');
-    const mobileNav = document.getElementById('mobileNav');
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      mobileNav.innerHTML = expanded ? '' : '<a href="#home">Home</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>';
-      mobileNav.style.display = expanded ? 'none' : 'block';
-    });
+    // Existing mobile nav behaviour (if present)
+    try {
+      const navToggle = document.getElementById('navToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      if(navToggle && mobileNav){
+        navToggle.addEventListener('click', () => {
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', String(!expanded));
+          mobileNav.innerHTML = expanded ? '' : '<a href="#home">Home</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>';
+          mobileNav.style.display = expanded ? 'none' : 'block';
+        });
+      }
+    } catch(e){ console.warn(e) }
+
+    // Typewriter + intersection observer for animations
+    (function(){
+      const texts = [
+        "Full Stack Developer",
+        "Certified IT Student (TOPCIT, TESDA)",
+        "UI/UX Designer",
+        "Problem Solver"
+      ];
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const speed = 100;
+
+      function typeWriter() {
+        const currentText = texts[textIndex];
+        const typedText = document.getElementById('typed-text');
+        if(!typedText) return;
+        if (isDeleting) {
+          typedText.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typedText.textContent = currentText.substring(0, charIndex + 1);
+          charIndex++;
+        }
+        if (!isDeleting && charIndex === currentText.length) {
+          isDeleting = true;
+          setTimeout(typeWriter, 1500);
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % texts.length;
+          setTimeout(typeWriter, 500);
+        } else {
+          setTimeout(typeWriter, isDeleting ? speed / 2 : speed);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(typeWriter, 800);
+
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.animation = `fadeInUp 0.6s ease-out forwards`;
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, section h2, .greeting').forEach(el => {
+          el.style.opacity = '0';
+          observer.observe(el);
+        });
+      });
+    })();
   </script>
 </body>
 </html>
