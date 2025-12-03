@@ -18,6 +18,307 @@
   <meta name="twitter:title" content="John Khylle C. Dumlao — Full Stack Developer">
   <meta name="twitter:description" content="Certified IT student and full-stack developer. Django, Python, Node.js, MongoDB.">
 
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* === FINE THOUGHT INSPIRED STYLES === */
+    :root {
+      --bg: #0a0a0a;
+      --surface: rgba(255, 255, 255, 0.05);
+      --surface-hover: rgba(255, 255, 255, 0.1);
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.6);
+      --primary: #8b5cf6;
+      --primary-glow: rgba(139, 92, 246, 0.3);
+      --radius: 24px;
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    * {box-sizing: border-box; margin: 0; padding: 0}
+    html {scroll-behavior: smooth; background: var(--bg)}
+    body {font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); min-height: 100vh; overflow-x: hidden}
+
+    /* Custom cursor */
+    .cursor { width:20px;height:20px;border:2px solid var(--primary);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:transform .2s ease,width .3s ease,height .3s ease }
+    .cursor-follower { width:40px;height:40px;background:var(--primary-glow);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:transform .6s ease,width .3s ease,height .3s ease }
+
+    /* Glass */
+    .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border:1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1) }
+
+    /* Nav */
+    header { position: fixed; top:0; width:100%; z-index:1000; padding:1.5rem 2rem }
+    nav { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between }
+    .logo { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.5rem; color:var(--text); text-decoration:none; display:flex; align-items:center; gap:.5rem; padding:.75rem 1.5rem; border-radius:var(--radius); transition:var(--transition) }
+    .logo:hover { background:var(--surface-hover) }
+    .nav-links { display:flex; gap:.5rem; align-items:center; padding:.75rem; border-radius:var(--radius); background:var(--surface) }
+    .nav-links a { color:var(--text-muted); text-decoration:none; padding:.75rem 1.5rem; border-radius:16px; font-weight:500; transition:var(--transition); position:relative; overflow:hidden }
+    .nav-links a:hover { color:var(--text); background:var(--surface-hover); transform:translateY(-2px) }
+    .nav-links a.active { color:var(--text); background:var(--surface-hover) }
+
+    /* Hero */
+    .hero { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:6rem 2rem 2rem; position:relative; overflow:hidden }
+    .hero::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px;height:600px; background:radial-gradient(circle,var(--primary-glow) 0%, transparent 70%); opacity:.3; z-index:-1 }
+    .hero-content { max-width:800px; text-align:center; z-index:1 }
+    .hero h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(3rem,8vw,6rem); font-weight:700; line-height:1; margin-bottom:1.5rem; background:linear-gradient(135deg,#ffffff 0%,#a78bfa 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent }
+    .hero-subtitle { font-size:clamp(1.2rem,3vw,1.8rem); color:var(--text-muted); margin-bottom:2rem }
+    .btn { display:inline-flex; align-items:center; gap:.75rem; padding:1rem 2rem; border-radius:var(--radius); font-weight:600; text-decoration:none; transition:var(--transition); position:relative; overflow:hidden; border:none; cursor:pointer }
+    .btn-primary { background:linear-gradient(135deg,var(--primary),#7c3aed); color:white; box-shadow:0 10px 30px var(--primary-glow) }
+    .btn-primary:hover { transform:translateY(-3px); box-shadow:0 20px 40px var(--primary-glow) }
+    .btn-outline { background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.2) }
+
+    /* Sections */
+    section { padding:6rem 2rem; position:relative }
+    .section-title { font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,5vw,3.5rem); text-align:center; margin-bottom:3rem; position:relative }
+    .section-title::after { content:''; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:60px; height:4px; background:var(--primary); border-radius:2px }
+
+    /* Projects */
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(350px,1fr)); gap:2rem; max-width:1200px; margin:0 auto }
+    .project-card { border-radius:var(--radius); padding:2rem; transition:var(--transition); position:relative; overflow:hidden; height:100% }
+    .project-card:hover { transform:translateY(-10px); background:var(--surface-hover) }
+    .project-number { font-family:'Space Grotesk',sans-serif; font-size:.9rem; font-weight:600; color:var(--primary); margin-bottom:1rem; opacity:.7 }
+    .project-title { font-size:1.5rem; font-weight:600; margin-bottom:1rem }
+    .project-description { color:var(--text-muted); line-height:1.6; margin-bottom:1.5rem }
+    .tech-tag { background:rgba(139,92,246,0.1); color:var(--primary); padding:.4rem .8rem; border-radius:20px; font-size:.85rem; font-weight:500 }
+
+    /* Skills */
+    .skills-container { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem }
+    .skill-category { padding:2rem; border-radius:var(--radius) }
+    .skill-category h3 { font-size:1.3rem; margin-bottom:1.5rem; color:var(--primary) }
+    .skill-list { display:flex; flex-wrap:wrap; gap:.75rem }
+    .skill-item { background:var(--surface); padding:.75rem 1.25rem; border-radius:16px; font-weight:500 }
+
+    /* Contact */
+    .contact-container { max-width:600px; margin:0 auto }
+
+    /* Footer */
+    footer { padding:3rem 2rem; text-align:center; border-top:1px solid rgba(255,255,255,0.1); margin-top:4rem }
+
+    /* Responsive */
+    @media (max-width:768px) {
+      .nav-links { display:none }
+      .hero h1 { font-size:clamp(2.5rem,10vw,4rem) }
+      .btn-group { flex-direction:column; align-items:center }
+      .btn { width:100%; max-width:300px; justify-content:center }
+      .projects-grid { grid-template-columns:1fr }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp { from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)} }
+    .animate-on-scroll { opacity:0; transform:translateY(30px); transition: opacity .6s ease, transform .6s ease }
+    .animate-on-scroll.visible { opacity:1; transform:translateY(0) }
+
+    /* Modal */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(10px); z-index:10000; align-items:center; justify-content:center; padding:2rem }
+    .modal.active { display:flex; animation:fadeIn .3s ease }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    .modal-content { background:var(--surface); border-radius:var(--radius); padding:3rem; max-width:800px; width:100%; max-height:90vh; overflow-y:auto; position:relative }
+    .modal-close { position:absolute; top:1.5rem; right:1.5rem; background:none; border:none; color:var(--text); font-size:1.5rem; cursor:pointer; padding:.5rem; border-radius:50% }
+
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "John Khylle C. Dumlao",
+    "jobTitle": "Full Stack Developer",
+    "alumniOf": "Bulacan State University",
+    "email": "mailto:Kayldumlao@gmail.com",
+    "url": "https://your-site.example"
+  }
+  </script>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- Navigation -->
+  <header class="glass">
+    <nav>
+      <a href="#home" class="logo"><span>JKD</span><span style="color:var(--primary);">.</span></a>
+      <div class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#cv" class="btn btn-outline" style="padding:.75rem 1.5rem"><i class="fas fa-download"></i> CV</a>
+      </div>
+      <button class="mobile-menu-btn btn btn-outline" style="display:none"><i class="fas fa-bars"></i></button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div style="margin-bottom:1.5rem"><span class="glass" style="padding:.5rem 1rem;border-radius:20px;font-size:.9rem;color:var(--primary)"><i class="fas fa-code"></i> Full Stack Developer</span></div>
+      <h1>John Khylle<br>C. Dumlao</h1>
+      <p class="hero-subtitle">Building digital experiences with clean code & modern design.<br>Certified IT Student • TOPCIT • TESDA</p>
+      <p style="color:var(--text-muted); margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto;">Specializing in Django, Python, Node.js, and MongoDB. Passionate about creating efficient, scalable web solutions.</p>
+      <div class="btn-group">
+        <a href="#contact" class="btn btn-primary"><i class="fas fa-rocket"></i> Let's Work Together</a>
+        <a href="#projects" class="btn btn-outline"><i class="fas fa-eye"></i> View Projects</a>
+        <a href="mailto:Kayldumlao@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Email Me</a>
+      </div>
+      <div style="margin-top:4rem; color:var(--text-muted)"><p><i class="fas fa-map-marker-alt"></i> San Jose Del Monte, Bulacan</p></div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category glass animate-on-scroll">
+          <h3><i class="fas fa-code"></i> Frontend</h3>
+          <div class="skill-list"><span class="skill-item">HTML5</span><span class="skill-item">CSS3</span><span class="skill-item">JavaScript</span><span class="skill-item">React</span><span class="skill-item">TypeScript</span><span class="skill-item">Responsive Design</span></div>
+        </div>
+        <div class="skill-category glass animate-on-scroll">
+          <h3><i class="fas fa-server"></i> Backend</h3>
+          <div class="skill-list"><span class="skill-item">Python</span><span class="skill-item">Django</span><span class="skill-item">Node.js</span><span class="skill-item">REST APIs</span><span class="skill-item">Authentication</span><span class="skill-item">WebSockets</span></div>
+        </div>
+        <div class="skill-category glass animate-on-scroll">
+          <h3><i class="fas fa-database"></i> Database & Tools</h3>
+          <div class="skill-list"><span class="skill-item">MongoDB</span><span class="skill-item">PostgreSQL</span><span class="skill-item">Git</span><span class="skill-item">Docker</span><span class="skill-item">AWS</span><span class="skill-item">CI/CD</span></div>
+        </div>
+        <div class="skill-category glass animate-on-scroll">
+          <h3><i class="fas fa-paint-brush"></i> Design</h3>
+          <div class="skill-list"><span class="skill-item">Figma</span><span class="skill-item">Photoshop</span><span class="skill-item">UI/UX Design</span><span class="skill-item">Wireframing</span><span class="skill-item">Prototyping</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card glass animate-on-scroll" data-modal="tahanap">
+          <div class="project-number">01</div>
+          <h3 class="project-title">TaHanap — Rental Platform</h3>
+          <p class="project-description">Full-stack rental platform connecting landlords and tenants with verified listings, advanced search, and secure messaging.</p>
+          <div class="project-tech"><span class="tech-tag">Django</span><span class="tech-tag">Python</span><span class="tech-tag">MongoDB</span><span class="tech-tag">JavaScript</span></div>
+          <div style="margin-top:auto; display:flex; gap:1rem;"><a href="https://tahanap.xyz" target="_blank" class="btn btn-outline" style="padding:.75rem 1.5rem"><i class="fas fa-external-link-alt"></i> Live Demo</a><button class="btn btn-outline view-details" style="padding:.75rem 1.5rem"><i class="fas fa-info-circle"></i> Details</button></div>
+        </div>
+        <div class="project-card glass animate-on-scroll" data-modal="portfolio">
+          <div class="project-number">02</div>
+          <h3 class="project-title">Client Portfolio Websites</h3>
+          <p class="project-description">Responsive portfolio websites for creatives and businesses, built with modern frameworks and optimized for performance.</p>
+          <div class="project-tech"><span class="tech-tag">HTML/CSS</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Figma</span><span class="tech-tag">Wix</span></div>
+          <div style="margin-top:auto; display:flex; gap:1rem;"><button class="btn btn-outline view-details" style="padding:.75rem 1.5rem; width:100%"><i class="fas fa-info-circle"></i> View Case Studies</button></div>
+        </div>
+        <div class="project-card glass animate-on-scroll" data-modal="branding">
+          <div class="project-number">03</div>
+          <h3 class="project-title">Branding & Marketing Assets</h3>
+          <p class="project-description">Complete branding packages including eBooks, logos, and marketing materials for digital campaigns.</p>
+          <div class="project-tech"><span class="tech-tag">Canva</span><span class="tech-tag">Photoshop</span><span class="tech-tag">Figma</span><span class="tech-tag">Illustrator</span></div>
+          <div style="margin-top:auto; display:flex; gap:1rem;"><button class="btn btn-outline view-details" style="padding:.75rem 1.5rem; width:100%"><i class="fas fa-info-circle"></i> View Samples</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item glass animate-on-scroll">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <h3>Email</h3>
+            <p>Kayldumlao@gmail.com</p>
+            <a href="mailto:Kayldumlao@gmail.com" class="btn btn-outline" style="margin-top:1rem;padding:.5rem 1rem">Send Message</a>
+          </div>
+          <div class="contact-item glass animate-on-scroll">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <h3>Phone</h3>
+            <p>0936-136-7159</p>
+            <a href="tel:09361367159" class="btn btn-outline" style="margin-top:1rem;padding:.5rem 1rem">Call Now</a>
+          </div>
+          <div class="contact-item glass animate-on-scroll">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <h3>Location</h3>
+            <p>San Jose Del Monte<br>Bulacan, Philippines</p>
+            <button class="btn btn-outline" style="margin-top:1rem;padding:.5rem 1rem"><i class="fas fa-directions"></i> Get Directions</button>
+          </div>
+        </div>
+        <div class="glass animate-on-scroll" style="padding:2rem;border-radius:var(--radius)">
+          <form id="contact-form" style="display:grid;gap:1.5rem">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+              <div><label style="display:block;margin-bottom:.5rem;font-weight:500">Name</label><input type="text" required style="width:100%;padding:1rem;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--text)"></div>
+              <div><label style="display:block;margin-bottom:.5rem;font-weight:500">Email</label><input type="email" required style="width:100%;padding:1rem;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--text)"></div>
+            </div>
+            <div><label style="display:block;margin-bottom:.5rem;font-weight:500">Message</label><textarea required rows="5" style="width:100%;padding:1rem;border-radius:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--text)"></textarea></div>
+            <button type="submit" class="btn btn-primary" style="width:100%"><i class="fas fa-paper-plane"></i> Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links"><a href="https://github.com/ItsKayl05" target="_blank"><i class="fab fa-github"></i> GitHub</a><a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></div>
+      <p style="color:var(--text-muted);margin-bottom:1rem">&copy; 2025 John Khylle C. Dumlao. All rights reserved.</p>
+      <p style="color:var(--text-muted);font-size:.9rem">Built with <i class="fas fa-heart" style="color:var(--primary)"></i> and <i class="fas fa-code" style="color:var(--primary)"></i> in the Philippines</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="project-modal" class="modal"><div class="modal-content glass"><button class="modal-close"><i class="fas fa-times"></i></button><div id="modal-content"></div></div></div>
+
+  <script>
+    // Custom Cursor
+    const cursor = document.createElement('div'); cursor.className='cursor'; document.body.appendChild(cursor);
+    const follower = document.createElement('div'); follower.className='cursor-follower'; document.body.appendChild(follower);
+    document.addEventListener('mousemove',(e)=>{ cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; setTimeout(()=>{ follower.style.left=e.clientX+'px'; follower.style.top=e.clientY+'px'; },100); });
+    // Magnetic effect on interactive elements
+    document.querySelectorAll('a, button').forEach(el=>{ el.addEventListener('mouseenter',()=>{ cursor.style.transform='scale(1.5)'; follower.style.transform='scale(1.5)'; }); el.addEventListener('mouseleave',()=>{ cursor.style.transform='scale(1)'; follower.style.transform='scale(1)'; }); });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); } }); },{threshold:0.1});
+    document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
+
+    // Modal
+    const modal = document.getElementById('project-modal'); const modalContent = document.getElementById('modal-content'); const closeModal = document.querySelector('.modal-close');
+    document.querySelectorAll('.view-details').forEach(btn=>{ btn.addEventListener('click',()=>{ const projectCard = btn.closest('.project-card'); const title = projectCard.querySelector('.project-title').textContent; const description = projectCard.querySelector('.project-description').textContent; modalContent.innerHTML = `<h2 style="margin-bottom:1rem;">${title}</h2><p style="color:var(--text-muted);margin-bottom:2rem;">${description}</p><div style="display:grid;gap:1rem;"><div class="glass" style="padding:1.5rem;border-radius:var(--radius);"><h3 style="margin-bottom:1rem;"><i class="fas fa-tasks"></i> Key Features</h3><ul style="list-style:none;padding:0;"><li style="padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.1);"><i class="fas fa-check" style="color:var(--primary);margin-right:.5rem;"></i> Responsive Design</li><li style="padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.1);"><i class="fas fa-check" style="color:var(--primary);margin-right:.5rem;"></i> Performance Optimized</li><li style="padding:.5rem 0;"><i class="fas fa-check" style="color:var(--primary);margin-right:.5rem;"></i> SEO Friendly</li></ul></div></div>`; modal.classList.add('active'); document.body.style.overflow='hidden'; }); });
+    closeModal.addEventListener('click',()=>{ modal.classList.remove('active'); document.body.style.overflow='auto'; });
+    modal.addEventListener('click',(e)=>{ if(e.target===modal){ modal.classList.remove('active'); document.body.style.overflow='auto'; } });
+
+    // Contact form
+    const contactForm = document.getElementById('contact-form'); if(contactForm){ contactForm.addEventListener('submit',(e)=>{ e.preventDefault(); alert('Thank you! Your message has been sent. I\'ll get back to you soon!'); e.target.reset(); }); }
+
+    // Smooth scroll nav active update
+    window.addEventListener('scroll',()=>{ const sections = document.querySelectorAll('section[id]'); const scrollPos = window.scrollY + 120; sections.forEach(section=>{ const sectionTop = section.offsetTop; const sectionHeight = section.clientHeight; const sectionId = section.getAttribute('id'); if(scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight){ document.querySelectorAll('.nav-links a').forEach(link=>{ link.classList.remove('active'); if(link.getAttribute('href') === `#${sectionId}`) link.classList.add('active'); }); } }); });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>John Khylle C. Dumlao — Full Stack Developer</title>
+  <meta name="description" content="Full-stack developer & certified IT student (TOPCIT, TESDA). Django, Python, Node.js, MongoDB — portfolio and contact.">
+  <meta name="author" content="John Khylle C. Dumlao">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="John Khylle C. Dumlao — Full Stack Developer">
+  <meta property="og:description" content="Certified IT student and full-stack developer. View projects, CV, and contact information.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/preview.svg">
+  <meta property="og:url" content="https://your-site.example">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="John Khylle C. Dumlao — Full Stack Developer">
+  <meta name="twitter:description" content="Certified IT student and full-stack developer. Django, Python, Node.js, MongoDB.">
+
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
