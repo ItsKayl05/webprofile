@@ -39,7 +39,7 @@
     }
 
     * {box-sizing: border-box; margin: 0; padding: 0}
-    html {scroll-behavior: smooth; background: var(--bg)}
+    html {scroll-behavior: smooth; background: var(--bg); scroll-padding-top: 96px /* header height */}
     body {font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg); min-height: 100vh; overflow-x: hidden}
 
     /* Custom cursor */
@@ -100,11 +100,17 @@
     /* Responsive */
     @media (max-width:768px) {
       .nav-links { display:none }
+      /* hide custom cursor on touch devices */
+      .cursor, .cursor-follower { display: none !important }
       .hero h1 { font-size:clamp(2.5rem,10vw,4rem) }
       .btn-group { flex-direction:column; align-items:center }
       .btn { width:100%; max-width:300px; justify-content:center }
       .projects-grid { grid-template-columns:1fr }
     }
+
+    /* keyboard focus */
+    :focus { outline: none }
+    a:focus, button:focus, input:focus, textarea:focus, .project-card:focus { box-shadow: 0 0 0 4px rgba(139,92,246,0.15); outline: 2px solid rgba(139,92,246,0.12); outline-offset: 3px }
 
     /* Animations */
     @keyframes fadeInUp { from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:translateY(0)} }
@@ -133,20 +139,21 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#home" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
   <!-- Custom Cursor -->
   <div class="cursor"></div>
   <div class="cursor-follower"></div>
 
   <!-- Navigation -->
   <header class="glass">
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
       <a href="#home" class="logo"><span>JKD</span><span style="color:var(--primary);">.</span></a>
-      <div class="nav-links">
-        <a href="#home" class="active">Home</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a href="cv/JohnKhylle_Dumlao_CV.pdf" download class="btn btn-outline" style="padding:.75rem 1.5rem"><i class="fas fa-download"></i> CV</a>
+      <div class="nav-links" role="menubar">
+        <a role="menuitem" href="#home" class="active">Home</a>
+        <a role="menuitem" href="#skills">Skills</a>
+        <a role="menuitem" href="#projects">Projects</a>
+        <a role="menuitem" href="#contact">Contact</a>
+        <a role="menuitem" href="cv/JohnKhylle_Dumlao_CV.pdf" download class="btn btn-outline" style="padding:.75rem 1.5rem"><i class="fas fa-download" aria-hidden="true"></i> <span class="sr-only">Download CV</span></a>
       </div>
       <button class="mobile-menu-btn btn btn-outline" style="display:none"><i class="fas fa-bars"></i></button>
     </nav>
