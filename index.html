@@ -60,11 +60,10 @@
     .nav-links a.active { color:var(--text); background:var(--surface-hover) }
 
     /* Hero */
-    .hero { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:6rem 2rem 2rem; position:relative; overflow:hidden }
-    .hero::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.85) 50%, rgba(139,92,246,0.15) 100%), repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(139,92,246,0.03) 35px, rgba(139,92,246,0.03) 70px); animation: subtleShift 20s ease-in-out infinite; z-index:0 }
-    .hero::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px;height:600px; background:radial-gradient(circle,var(--primary-glow) 0%, transparent 70%); opacity:.3; z-index:0; animation: pulse 4s ease-in-out infinite }
-    @keyframes subtleShift { 0%, 100% { background-position: 0% 0%; } 50% { background-position: 100% 100%; } }
-    @keyframes pulse { 0%, 100% { transform:translate(-50%,-50%) scale(1); opacity:.3; } 50% { transform:translate(-50%,-50%) scale(1.1); opacity:.2; } }
+    .hero { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:6rem 2rem 2rem; position:relative; overflow:hidden; background: url('assets/keyboard-bg.jpg') center/cover no-repeat fixed }
+    .hero::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.88) 40%, rgba(139,92,246,0.25) 100%); z-index:0 }
+    .hero::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px;height:600px; background:radial-gradient(circle,var(--primary-glow) 0%, transparent 70%); opacity:.4; z-index:0; animation: pulse 4s ease-in-out infinite }
+    @keyframes pulse { 0%, 100% { transform:translate(-50%,-50%) scale(1); opacity:.4; } 50% { transform:translate(-50%,-50%) scale(1.15); opacity:.25; } }
     .hero-content { max-width:800px; text-align:center; z-index:10; position:relative }
     .hero h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(3rem,8vw,6rem); font-weight:700; line-height:1; margin-bottom:1.5rem; background:linear-gradient(135deg,#ffffff 0%,#a78bfa 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent }
     .hero-subtitle { font-size:clamp(1.2rem,3vw,1.8rem); color:var(--text-muted); margin-bottom:2rem }
@@ -210,7 +209,7 @@
       <div class="projects-grid">
         <div class="project-card glass animate-on-scroll" data-modal="tahanap">
           <div class="project-number">01</div>
-          <img src="assets/tahanap-screenshot.svg" alt="TaHanap rental platform screenshot" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:1rem;border:1px solid rgba(255,255,255,0.04)">
+          <img src="assets/tahanap-screenshot.PNG" alt="TaHanap rental platform screenshot" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:1rem;border:1px solid rgba(255,255,255,0.04)">
           <h3 class="project-title">TaHanap — Rental Platform</h3>
           <p class="project-description">Full-stack rental platform connecting landlords and tenants with verified listings, advanced search, and secure messaging.</p>
           <div class="project-tech"><span class="tech-tag">Django</span><span class="tech-tag">Python</span><span class="tech-tag">MongoDB</span><span class="tech-tag">JavaScript</span></div>
@@ -272,7 +271,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> 
   </section>
 
   <footer>
